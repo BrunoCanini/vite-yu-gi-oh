@@ -1,3 +1,27 @@
+<script>
+import { store } from '../data/store';
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+        store
+    }
+  },
+  mounted() {
+    console.log("store", store)
+
+    axios.get(this.store.urlAPI).then(risposta => {
+      console.log(risposta.data.data);
+      this.store = risposta.data.data;
+      console.log(this.store)
+    }).catch(error => {
+      console.error("te pareva");
+    })
+  }
+}
+</script>
+
 <template>
     <div class="containerMain">
         <div class="headMain">
@@ -5,29 +29,16 @@
         </div>
 
         <div class="containerBox">
-            <div class="box">
-                <div class="boxImg"></div>
-                <div class="boxText"></div>
-            </div>
-
-            <div class="box">
-                <div class="boxImg"></div>
+            <div v-for="dati in store" class="box">
+                <div class="boxImg">
+                    <img :src="dati.card_images[0].image_url" alt="">
+                </div>
                 <div class="boxText">
-                    <p>prova</p>
+                    <p> {{ dati.name}} </p>
+                    <p> {{ dati.archetype }}</p>
                 </div>
             </div>
-            <div class="box">
-                <div class="boxImg"></div>
-                <div class="boxText"></div>
-            </div>
-            <div class="box">
-                <div class="boxImg"></div>
-                <div class="boxText"></div>
-            </div>
-            <div class="box">
-                <div class="boxImg"></div>
-                <div class="boxText"></div>
-            </div>
+
         </div>
     </div>
 </template>
@@ -37,7 +48,6 @@
 
 .containerMain{
     max-width: 1680px;
-    height: 1000px;
     background-color: white;
     padding: 70px;
 }
@@ -53,16 +63,21 @@
     flex-wrap: wrap;
 }
 
+img{
+    width: 100%;
+    display: block;
+}
+
 .box{
-    width: calc(100% / 5);
+    width: calc(100% / 5 - 20px);
     height: 520px;
+    margin: 10px;
     border: 1px solid black;
 }
 
 .boxImg{
     width: 100%;
     height: 400px;
-    border: 1px solid black;
 }
 
 </style>
