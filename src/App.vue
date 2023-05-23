@@ -20,7 +20,9 @@ export default {
     console.log("store", store)
 
     axios.get(this.store.urlAPI).then(risposta => {
-      console.log(risposta)
+      console.log(risposta.data);
+    }).catch(error => {
+      console.error("te pareva");
     })
   }
 }
