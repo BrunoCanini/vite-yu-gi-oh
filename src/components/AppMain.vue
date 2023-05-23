@@ -34,7 +34,7 @@ export default {
                     <img :src="dati.card_images[0].image_url" alt="">
                 </div>
                 <div class="boxText">
-                    <p> {{ dati.name}} </p>
+                    <h3> {{ dati.name}} </h3>
                     <p> {{ dati.archetype }}</p>
                 </div>
             </div>
@@ -72,12 +72,20 @@ img{
     width: calc(100% / 5 - 20px);
     height: 520px;
     margin: 10px;
-    border: 1px solid black;
+    background-color: $colore;
 }
 
 .boxImg{
     width: 100%;
     height: 400px;
+}
+
+.boxText{
+    text-align: center;
+    h3{
+        padding: 1rem 0;
+        color: white;
+    }
 }
 
 </style>
