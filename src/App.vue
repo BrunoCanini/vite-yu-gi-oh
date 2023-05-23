@@ -2,6 +2,7 @@
 import AppHeader from './components/AppHeader.vue'
 
 export default {
+  name: "App",
   components:{
     AppHeader
   }
@@ -12,6 +13,6 @@ export default {
   <AppHeader />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
