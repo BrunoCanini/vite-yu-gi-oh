@@ -5,15 +5,16 @@ export default {
 </script>
 
 <template>
-    <h1>prova</h1>
+    <header>
+        <h1>Yu-Gi-Oh Api</h1>
+    </header>
 </template>
 
 <style lang="scss" scoped>
-@use '../styles/partials/variables.scss';
+@use '../styles/partials/variables.scss' as *;
 
-h1{
-    color: $colore;
+header{
+    padding: 0.5rem 160px;
 }
-
 
 </style>
