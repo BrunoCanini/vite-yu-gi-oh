@@ -13,7 +13,7 @@ export default {
 
     axios.get(this.store.urlAPI).then(risposta => {
       console.log(risposta.data.data);
-      this.store = risposta.data.data;
+      this.store.carte = risposta.data.data;
       console.log(this.store)
     }).catch(error => {
       console.error("te pareva");
@@ -29,13 +29,13 @@ export default {
         </div>
 
         <div class="containerBox">
-            <div v-for="dati in store" class="box">
+            <div v-for="dato in store.carte" class="box">
                 <div class="boxImg">
-                    <img :src="dati.card_images[0].image_url" alt="">
+                    <img v-if="dato.card_images[0]" :src="dato.card_images[0].image_url" alt="">
                 </div>
                 <div class="boxText">
-                    <h3> {{ dati.name}} </h3>
-                    <p> {{ dati.archetype }}</p>
+                    <h3> {{ dato.name}} </h3>
+                    <p> {{ dato.archetype }}</p>
                 </div>
             </div>
 
@@ -70,14 +70,12 @@ img{
 
 .box{
     width: calc(100% / 5 - 20px);
-    height: 520px;
     margin: 10px;
     background-color: $colore;
 }
 
 .boxImg{
     width: 100%;
-    height: 400px;
 }
 
 .boxText{
@@ -85,6 +83,10 @@ img{
     h3{
         padding: 1rem 0;
         color: white;
+    }
+
+    p{
+        padding: 0.5rem 0;
     }
 }
 
